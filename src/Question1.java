@@ -1,8 +1,7 @@
 import java.util.*;
 class Program {
     static boolean ValidateRegistrationNo(String registrationNo) {
-        String[] str = new String[4];
-        str = registrationNo.split(" ");
+        String[] str = registrationNo.split(" ");
         if (str[0].length() == 2)
         {
             if (!str[0].equals(str[0].toUpperCase()))
@@ -17,18 +16,24 @@ class Program {
             }
         }
         else return false;
-        if (str[2].length() <= 2)
-        {
-            if(!str[2].equals(str[2].toUpperCase()))
-                return false;
+        if (isNumeric(str[2])) {
+            if (!uniqueCharacters(str[2]))
+                    return false;
         }
-        else return false;
-        if (isNumeric(str[3])) {
-            if (!uniqueCharacters(str[3])) {
-                return false;
+        else {
+            if (str[2].length() <= 2)
+            {
+                if(!str[2].equals(str[2].toUpperCase()))
+                    return false;
             }
+            else return false;
+            if (isNumeric(str[3])) {
+                if (!uniqueCharacters(str[3])) {
+                    return false;
+                }
+            }
+            else return false;
         }
-        else return false;
         return true;
     }
     public static boolean isNumeric(String string) {
@@ -55,7 +60,7 @@ class Program {
         return true;
     }
 }
-public class RegistrationNumber {
+public class Question1 {
     public static void main(String[] args) {
        Scanner sc = new Scanner(System.in);
        System.out.println("Enter the registration plate number: ");
